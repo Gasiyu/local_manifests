@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+    <remote name="Gasiyu"
+            fetch="ssh://git@github.com/Gasiyu" />
+    <remote name="Gasiyu-Gitlab"
+            fetch="ssh://git@gitlab.com/Gasiyu" />
+
+    <!-- Device trees -->
+    <project name="android_device_xiaomi_ginkgo" path="device/xiaomi/ginkgo" revision="11.1" remote="Gasiyu" clone-depth="1" />
+
+    <!-- Vendor trees -->
+    <project name="android_vendor_xiaomi_ginkgo" path="vendor/xiaomi/ginkgo" revision="11.1" remote="Gasiyu" clone-depth="1" />
+    <project name="android_vendor_miuicamera" path="vendor/miuicamera" revision="11.1" remote="Gasiyu" clone-depth="1" />
+
+    <!-- Kernel tree and clang -->
+    <project name="android_kernel_xiaomi_ginkgo" path="kernel/xiaomi/ginkgo" revision="11.1" remote="Gasiyu" clone-depth="1" />
+    <project name="kdrag0n/proton-clang" path="prebuilts/clang/host/linux-x86/clang-12.0" revision="master" remote="github" clone-depth="1" />
+
+    <!-- Needed custom HALs -->
+    <remove-project name="android_hardware_qcom_audio" />
+    <remove-project name="android_hardware_qcom_display"/>
+    <remove-project name="android_hardware_qcom_media" />
+    <remove-project name="android_vendor_qcom_opensource_display-commonsys-intf" />
+    <remove-project name="android_vendor_qcom_opensource_power" />
+    <project path="hardware/qcom-caf/sm8150/audio" name="ArrowOS/android_hardware_qcom_audio" groups="qcom,qcom_audio" remote="github" revision="arrow-11.0-caf-sm8150" />
+    <project path="hardware/qcom-caf/sm8150/display" name="ArrowOS/android_hardware_qcom_display" groups="pdk,qcom,qcom_display" remote="github" revision="arrow-11.0-caf-sm8150" />
+    <project path="hardware/qcom-caf/sm8150/media" name="ArrowOS/android_hardware_qcom_media" groups="qcom" remote="github" revision="arrow-11.0-caf-sm8150" />
+    <project path="vendor/qcom/opensource/commonsys-intf/display" name="ArrowOS/android_vendor_qcom_opensource_display-commonsys-intf" remote="github" revision="arrow-11.0" />
+    <project path="vendor/qcom/opensource/power" name="ArrowOS/android_vendor_qcom_opensource_power" remote="github" revision="arrow-11.0" />
+
+    <!-- Custom repo -->
+    <remove-project name="android_vendor_zeus" />
+    <remove-project name="zeus-gapps/vendor_google_gms" />
+    <project path="vendor/google/gms" name="vendor_google_gms" remote="Gasiyu-Gitlab" revision="eleven" clone-depth="1" />
+    <project path="vendor/lineage" name="android_vendor_zeus" remote="Gasiyu" revision="11.1" />
+</manifest>
